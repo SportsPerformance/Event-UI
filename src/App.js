@@ -1,24 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
+import Navbar from './Components/Navbar';
+import ButtonGroup from './Components/ButtonGroup';
+import ViewEvents from './Components/ViewEvents';
+import CreateEvent from './Components/CreateEvent';
 
 function App() {
+  const [currentSection, setCurrentSection] = useState('viewEvents');
+
+  const showSection = (section) => {
+    console.log("Switching to section:", section); 
+    setCurrentSection(section);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <ButtonGroup showSection={showSection} />
+      {currentSection === 'viewEvents' && <ViewEvents />}
+      {currentSection === 'createEvent' && <CreateEvent />}
+    </>
   );
 }
 

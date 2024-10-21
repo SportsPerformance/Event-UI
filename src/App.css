@@ -1,38 +1,256 @@
-.App {
+/* Overall styling */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+/* Navbar styling */
+nav {
+  background-color: #fff;
+  padding: 10px 2%; /* Consistent padding */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex; /* Use flexbox for layout */
+  justify-content: space-between; /* Space between title and links */
+  align-items: center; /* Center items vertically */
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+}
+
+nav .navbar-title {
+  font-size: 1.5em; /* Responsive font size */
+  font-weight: bold; /* Make the title bold */
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex; /* Display links in a row */
+  gap: 15px; /* Space between links */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+}
+
+nav ul li {
+  display: inline; /* Keep list items inline */
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #000; /* Use the same color for placeholder items */
+  padding: 10px 15px; /* Padding for links */
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  background-color: #f1f1f1;
+  border-radius: 5px;
+}
+
+/* Button group */
+.btn-group {
   text-align: center;
+  margin: 20px 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.btn {
+  padding: 10px 20px;
+  background-color: #007bff;
   color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.btn:hover {
+  background-color: #0056b3;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Sections styling */
+.section {
+  display: none;
+  padding: 20px;
+  margin: auto;
+  width: 100%; /* Responsive width */
+  max-width: 900px; /* Maximum width */
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.section.active {
+  display: block; /* Only display active section */
+}
+
+/* Form Styling */
+.form-group {
+  margin-bottom: 15px;
+  display: flex; /* Make form-group a flex container */
+  justify-content: space-between; /* Space between the children (title/date, meet/venue) */
+  flex-wrap: wrap; /* Allows wrapping for smaller screens */
+}
+
+.form-group > div {
+  flex: 1; /* Take equal space */
+  max-width: 48%; /* Ensure each child takes about 50% with some margin */
+}
+
+.form-group label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+form input[type="text"],
+form textarea,
+form select,
+form input[type="file"] {
+  width: 90%; /* Fill the available width within each flex item */
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.create-btn {
+  width: 100%;
+  max-width: 875px;
+  background-color: #28a745;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.create-btn:hover {
+  background-color: #218838;
+}
+
+
+
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table th,
+table td {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+.view-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.view-btn:hover {
+  background-color: #0056b3;
+}
+
+.print-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.print-btn:hover {
+  background-color: #218838;
+}
+
+/* Print styling */
+@media print {
+  body * {
+    visibility: hidden; /* Hide everything */
   }
-  to {
-    transform: rotate(360deg);
+
+  #eventsTable,
+  #eventsTable * {
+    visibility: visible; /* Only show the events table */
+  }
+
+  #eventsTable {
+    position: absolute; /* Position it correctly on the printed page */
+    left: 0;
+    top: 0;
+  }
+}
+
+/* Responsive search bar */
+#search {
+  width: 100%; /* Full width for smaller screens */
+  max-width: 600px; /* Maximum width for larger screens */
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Responsive Power BI container */
+.powerbi-container {
+  margin-top: 20px; /* Space above the container */
+  padding: 20px; /* Space inside the container */
+  background-color: white; /* Matches other sections */
+  border-radius: 8px; /* Consistent with section styling */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Consistent with section styling */
+  max-width: 100%; /* Set a max width */
+  overflow: hidden; /* Hide overflow */
+}
+
+.responsive-iframe {
+  width: 100%; /* Full width of the container */
+  height: 625px; /* Fixed height for the iframe */
+  border: none; /* Remove border */
+  border-radius: 8px; /* Optional: for rounded corners */
+}
+
+
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  nav .navbar-title {
+    font-size: 1.2em; /* Smaller font for mobile */
+  }
+
+  nav ul {
+    flex-direction: column; /* Stack nav items vertically */
+    align-items: center; /* Center items */
+  }
+
+  nav ul li {
+    margin: 5px 0; /* Spacing between nav items */
+  }
+
+  .section {
+    padding: 15px; /* Less padding on smaller screens */
+  }
+
+  .btn {
+    padding: 8px 16px; /* Smaller button size */
+  }
+
+  #search {
+    width: 90%; /* Wider search bar on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  nav .navbar-title {
+    font-size: 1em; /* Even smaller font for very small screens */
+  }
+
+  #search {
+    width: 90%; /* Make the search bar take more width on small screens */
   }
 }
